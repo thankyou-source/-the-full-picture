@@ -1,75 +1,22 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1220">
-<title>The Full Picture</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header>
-  <div class="brand"><div class="logo">◎</div><div><h1>The Full Picture</h1><p>Every source. One story.</p></div></div>
-  <div class="live">● LIVE MONITOR</div>
-</header>
-
-<nav>
-  <button class="active">UK Migration</button>
-  <button>Channel & Calais</button>
-  <button>Enforcement</button>
-  <button>Official Data</button>
-</nav>
-
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1220"><title>The Full Picture</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><div class="brand"><div class="logo">◎</div><div><h1>The Full Picture</h1><p>Every source. One story.</p></div></div><div class="live">● LIVE MONITOR</div></header>
+<nav><button class="active">UK Migration</button><button>Channel & Calais</button><button>Discrepancies</button><button>Official Data</button></nav>
 <main>
-<section class="hero">
-  <div>
-    <div class="eyebrow">UK MIGRATION · LIVE PICTURE</div>
-    <h2>See the event,<br>not twenty versions of it.</h2>
-    <p>Public reporting grouped into real-world events, with the original sources and evidence status shown clearly.</p>
-  </div>
-  <div class="key">
-    <strong>Evidence key</strong>
-    <span class="green">● Officially confirmed</span>
-    <span class="blue">● Multiple independent sources</span>
-    <span class="amber">● Single-source report</span>
-    <span class="red">● Unverified</span>
-  </div>
-</section>
-
-<section class="metrics">
-  <div><small>MONITORING</small><b>UK + French sources</b></div>
-  <div><small>METHOD</small><b>Events, not headlines</b></div>
-  <div><small>STATUS</small><b>Prototype</b></div>
-</section>
-
-<div class="heading"><h3><i></i> Live & developing</h3><span>Grouped event feed</span></div>
-
-<article class="event">
-  <div class="top"><span class="topic">CHANNEL / FRANCE</span><span class="verified green">● OFFICIAL CONFIRMATION</span></div>
-  <h3>French maritime authorities publish consolidated Channel rescue account</h3>
-  <div class="meta">21–23 September 2026 · English Channel</div>
-  <p>French maritime authorities reported 129 people rescued across several incidents. Related reporting belongs in this event rather than appearing as repeated headlines.</p>
-  <div class="sources">
-    <strong>Source trail</strong>
-    <p><em>PRIMARY</em> French Maritime Prefecture</p>
-    <p><em>RELATED</em> UK/French reporting referring to the same incidents</p>
-  </div>
-  <a href="https://www.premar-manche.gouv.fr/" target="_blank" rel="noopener">View original official source ↗</a>
-</article>
-
-<article class="event">
-  <div class="top"><span class="topic">THE FULL PICTURE METHOD</span><span class="verified blue">● MULTI-SOURCE</span></div>
-  <h3>One incident can generate dozens of posts. We show one story.</h3>
-  <p>A livestream, social post, French local report and UK newspaper may all describe the same event. The system separates originating evidence from outlets simply repeating it.</p>
-  <div class="pipeline"><span>REPORTS</span><b>→</b><span>MATCH</span><b>→</b><span>VERIFY</span><b>→</b><span>ONE EVENT</span></div>
-</article>
-
-<section class="note">
-  <h3>Source-first, not viewpoint-first</h3>
-  <p>Evidence labels describe the sourcing, not whether a report supports a political position. Repetition does not equal independent confirmation. Developing information can change as new evidence appears.</p>
-</section>
+<section class="hero"><div><div class="eyebrow">UK MIGRATION · LIVE PICTURE</div><h2>See the event,<br>not twenty versions of it.</h2><p>Public reporting grouped into real-world events, with original sources and evidence status shown clearly.</p></div><div class="key"><strong>Evidence key</strong><span class="green">● Established / official</span><span class="blue">● Multiple independent sources</span><span class="amber">● Reported / single source</span><span class="red">● Discrepancy / unresolved</span></div></section>
+<section class="metrics"><div><small>AUTOMATION</small><b>Hourly monitoring</b></div><div><small>METHOD</small><b>Events, not headlines</b></div><div><small>STATUS</small><b id="live-state">Loading live data…</b></div></section>
+<div class="heading"><h3><i></i> Live & developing</h3><span id="last-check">Connecting to monitor…</span></div>
+<div id="live-events"><article class="event"><h3>Loading current event data…</h3></article></div>
+<section class="note"><h3>How The Full Picture works</h3><p>Repeated copies of one claim do not count as independent confirmation. Where credible sources conflict, the site should show the discrepancy and what remains unknown rather than choosing a political side.</p></section>
 </main>
-
-<footer><strong>The Full Picture</strong> · Prototype · £0 infrastructure target<br><small>Public-source aggregation. Follow original sources for full reporting.</small></footer>
-</body>
-</html>
+<footer><strong>The Full Picture</strong> · Public-source aggregation<br><small>Developing information can change. Follow original sources for full context.</small></footer>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+(async()=>{const state=document.getElementById('live-state'),last=document.getElementById('last-check'),target=document.getElementById('live-events');
+try{const r=await fetch('data/events.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);const d=await r.json();
+const snaps=Array.isArray(d.source_snapshots)?d.source_snapshots:[], ok=snaps.filter(x=>x.ok).length, events=Array.isArray(d.events)?d.events:[];
+state.textContent=`${ok}/${snaps.length} machine sources reached`;last.textContent=d.collector_checked_at?`Last automated check: ${new Date(d.collector_checked_at).toLocaleString()}`:'Awaiting first check';
+if(!events.length){target.innerHTML=`<article class="event"><div class="top"><span class="topic">AUTOMATED MONITOR</span><span class="verified blue">● RUNNING</span></div><h3>Source monitoring is live</h3><p>The automated collector is checking its connected sources hourly. No structured event cards have been published by the collector yet.</p><div class="sources"><strong>Machine-source status</strong>${snaps.map(s=>`<p><em>${s.ok?'REACHED':'ERROR'}</em> ${esc(s.name)}</p>`).join('')}</div></article>`;return;}
+target.innerHTML=events.map(e=>{const cls=e.status==='official'?'green':e.status==='multiple'?'blue':e.status==='single'?'amber':'red';return `<article class="event"><div class="top"><span class="topic">${esc(e.topic||'LIVE EVENT')}</span><span class="verified ${cls}">● ${esc((e.status||'reported').toUpperCase())}</span></div><h3>${esc(e.title||'Developing event')}</h3><div class="meta">${esc(e.meta||'')}</div><p>${esc(e.summary||'')}</p>${(e.sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name||'Original source')} ↗</a>`).join('<br>')}</article>`}).join('');
+}catch(e){state.textContent='Monitor temporarily unavailable';last.textContent='Could not load current data';target.innerHTML='<article class="event"><h3>Live data could not be loaded</h3><p>The website remains online. Try refreshing shortly.</p></article>';}})();
+</script></body></html>
