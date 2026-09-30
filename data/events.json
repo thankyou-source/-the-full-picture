@@ -1,7 +1,7 @@
 {
   "updated": null,
   "events": [],
-  "collector_checked_at": "2026-09-30T20:29:51.178119+00:00",
+  "collector_checked_at": "2026-09-30T21:30:26.396024+00:00",
   "source_snapshots": [
     {
       "id": "home-office-daily",
@@ -9,9 +9,9 @@
       "kind": "official_stats",
       "url": "https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats/migrants-detected-crossing-the-english-channel-in-small-boats-last-7-days",
       "ok": true,
-      "checked_at": "2026-09-30T20:29:49.023542+00:00",
+      "checked_at": "2026-09-30T21:30:24.927394+00:00",
       "preview": "Small boat arrivals: last 7 days - GOV.UK Cookies on GOV.UK We use some essential cookies to make this website work. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us deliver content from their services. You have accepted additional cookies. You can change your cookie settings at any time. You have rejected additional cookies. You can change your cookie settings at any ti",
-      "fingerprint": "-96619305917828720"
+      "fingerprint": "-5458929743322456248"
     },
     {
       "id": "home-office-weekly",
@@ -19,9 +19,9 @@
       "kind": "official_stats",
       "url": "https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats/weekly-summary-of-small-boat-arrivals-and-preventions",
       "ok": true,
-      "checked_at": "2026-09-30T20:29:50.064301+00:00",
+      "checked_at": "2026-09-30T21:30:25.525627+00:00",
       "preview": "Weekly summary of small boat arrivals and preventions - GOV.UK Cookies on GOV.UK We use some essential cookies to make this website work. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us deliver content from their services. You have accepted additional cookies. You can change your cookie settings at any time. You have rejected additional cookies. You can change your cook",
-      "fingerprint": "-7424962027672523110"
+      "fingerprint": "-1840580946148097434"
     },
     {
       "id": "premar-latest",
@@ -29,9 +29,9 @@
       "kind": "official_incident",
       "url": "https://www.premar-manche.gouv.fr/communiques-presse/bilan-des-operation-d-assistance-et-de-sauvetage-en-mer-des-journees-du-21-au-23-septembre-2026-129-personnes-secourues",
       "ok": true,
-      "checked_at": "2026-09-30T20:29:51.178097+00:00",
+      "checked_at": "2026-09-30T21:30:26.396005+00:00",
       "preview": "Bilan des opération d'assistance et de sauvetage en mer des journées du 21 au 23 septembre 2026 : 129 personnes secourues - Préfecture maritime de la Manche et de la mer du Nord atlantique manche et mer du nord méditerranée Francais English Español Italiano Rechercher dans Les actualités Les arrếtés Actualités Communiqués de presse Brèves Consultations publiques Préfecture maritime Le Préfet maritime Services L'action de l'Etat en mer Zone maritime Manche - mer du Nord Thématiques LOISIRS NAUTIQ",
-      "fingerprint": "-2838877114542357834"
+      "fingerprint": "939333436718199596"
     }
   ]
 }
